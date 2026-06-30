@@ -1,4 +1,4 @@
-# Simulação de Sprint Scrum - [Nome do Grupo]
+# Simulação de Sprint Scrum - [SeuByte]
 
 ## Informações Gerais
 
