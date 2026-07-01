@@ -11,7 +11,7 @@
 - Merge realizado na branch main
 - Demonstração funcionando na Sprint Review
 
-## Tarefas do Sprint
+## Tarefas do Sprint 1
 
 | # | Tarefa             | Descrição              | Responsável     | Status | Critérios de Aceitação                      |
 |---|--------------------|------------------------|-----------------|--------|---------------------------------------------|
@@ -19,7 +19,9 @@
 | 2 | Cores da page      |Definir as Cores da page| Wanderson       |Completo|Cores definidas e Aprovadas pela Equipe      |
 | 3 | Prototipação       |Criar Protótipo Figma   | Malthael        |Completo|Protótipo criado no Figma, contendo todas as seções planejadas e aprovado pela equipe.|
 | 4 | Desenvolvimento do Site|Estruturar Pastas   | Valdemir Valentin|Completo|Estrutura de pastas criada, organizada e validada pela equipe.
-
+| 5 | Criação do Backlog|Organizar e Priorizar Tarefas| Pedro Benevides|Completo|O backlog foi criado, contendo todas as tarefas necessárias e priorizadas.|
+| 6 | Definição dos Requisitos|Definir os requisitos da landing page| Pedro Benevides|Completo|Requisitos documentados, revisados e aprovados pela equipe.|
+| 7 | Definição dos Critérios de Aceitação|Estabelecer critérios para as tarefas| Pedro Benevides|Completo|Todas as tarefas possuem critérios de aceitação definidos e validados.|
 
 
 
