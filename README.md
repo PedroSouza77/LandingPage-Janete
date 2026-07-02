@@ -5,7 +5,7 @@
 - **Disciplina:** Gestão Ágil de Projetos de Software
 - **Data da Sprint:** 30/06/2026
 - **Duração:** 19h às 22h (3 horas)
-- **Equipe:** Equipe do PI-3
+- **Equipe:** Pedro Benevides Souza, Wanderson, Rafael Gonçalves, Matheus Alexandre, Valdemir Valentin
 - **Professor:** Esdras Bezerra da Silva
 
 ---
