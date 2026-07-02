@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Janete Produtos Naturais</title>
+
+  <!-- preconnect antes do link da fonte reduz a latência da 1ª requisição pro Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+
+  <header class="navbar">
+    <!-- folha decorativa vazando no canto superior direito, atrás do conteúdo -->
+    <img
+      src="../imagens/folha-decorativa.png"
+      alt=""
+      class="navbar__leaf-decoration"
+      aria-hidden="true"
+    />
+
+    <div class="navbar__container">
+      <a href="#inicio" class="navbar__logo">
+        <img src="../imagens/logo-janete.png" alt="Janete Produtos Naturais" />
+      </a>
+
+      <nav class="navbar__nav" id="navbar-nav">
+        <a href="#inicio" class="navbar__link is-active" aria-current="page">Início</a>
+        <a href="#sobre" class="navbar__link">Sobre nós</a>
+        <a href="#faq" class="navbar__link">FAQ</a>
+        <a href="#servicos" class="navbar__link">Serviços</a>
+      </nav>
+
+      <button
+        class="navbar__toggle"
+        id="navbar-toggle"
+        aria-label="Abrir menu"
+        aria-expanded="false"
+        aria-controls="navbar-nav"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <section class="hero" id="inicio">
+    <div class="hero__overlay"></div>
+
+    <div class="hero__content">
+      <span class="hero__badge">🌿 Direto do produtor</span>
+
+      <h1 class="hero__title">Da terra direto para a sua casa</h1>
+
+      <p class="hero__text">
+        Produtos naturais selecionados com cuidado, do plantio à colheita,
+        pra levar até você o que a natureza tem de mais puro.
+      </p>
+
+      <a href="#servicos" class="hero__cta">
+        Conheça nossos produtos
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path
+            d="M5 12h14m-6-6 6 6-6 6"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </a>
+    </div>
+
+    <a href="#sobre" class="hero__scroll-cue" aria-label="Rolar para a próxima seção">
+      <svg viewBox="0 0 24 24" width="26" height="26" fill="none" aria-hidden="true">
+        <path
+          d="M6 9l6 6 6-6"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </a>
+  </section>
+
+  <section class="about" id="sobre">
+    <div class="about__container">
+      <div
+        class="about__banner"
+        role="img"
+        aria-label="Site da Janete Produtos Naturais aberto em um notebook"
+      >
+        <div class="about__overlay"></div>
+
+        <div class="about__content">
+          <div class="about__header">
+            <span class="about__line" aria-hidden="true"></span>
+            <h2 class="about__title">Sobre nós</h2>
+            <span class="about__line" aria-hidden="true"></span>
+          </div>
+
+          <p class="about__lead">
+            A Janete Produtos Naturais está no mercado desde 2010, trazendo
+            produtos frescos e de excelente qualidade, escolhidos com carinho
+            exclusivamente para você.
+          </p>
+
+          <ul class="about__locations">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path
+                  d="M12 21s7-6.1 7-11.5A7 7 0 0 0 5 9.5C5 14.9 12 21 12 21Z"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                />
+                <circle cx="12" cy="9.5" r="2.3" stroke="currentColor" stroke-width="1.8" />
+              </svg>
+              Araras – SP
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path
+                  d="M12 21s7-6.1 7-11.5A7 7 0 0 0 5 9.5C5 14.9 12 21 12 21Z"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                />
+                <circle cx="12" cy="9.5" r="2.3" stroke="currentColor" stroke-width="1.8" />
+              </svg>
+              Leme – SP
+            </li>
+          </ul>
+
+          <p class="about__note">
+            E também pelo conforto da sua casa — as compras podem ser feitas
+            online, onde você estiver.
+          </p>
+
+          <blockquote class="about__mission">
+            Nossa missão é oferecer uma alimentação saudável por meio de
+            produtos de alta qualidade, proporcionando aos nossos clientes uma
+            experiência única e contribuindo para a melhor preservação dos
+            recursos naturais.
+          </blockquote>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <script src="../js/script.js"></script>
+</body>
+</html>
