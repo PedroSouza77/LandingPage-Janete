@@ -39,6 +39,31 @@ body {
   background-color: var(--color-bg);
 }
 
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+}
+
+.skip-link:focus-visible {
+  position: fixed;
+  left: 16px;
+  top: 16px;
+  width: auto;
+  height: auto;
+  padding: 12px 18px;
+  background-color: #ffffff;
+  color: var(--color-ink);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  z-index: 999;
+  clip: auto;
+}
+
 /* Respeita quem desativou animação no sistema — sem isso, toda a entrada
    suave da hero e o hover da navbar ignoram essa preferência de acessibilidade */
 @media (prefers-reduced-motion: reduce) {
@@ -89,9 +114,7 @@ body {
   box-shadow: var(--shadow-md);
 }
 
-/* Camada de corte da folha: cobre exatamente a área visível da navbar e
-   corta só o que vaza DELA — o dropdown mobile, que é irmão dessa camada
-   (não filho), fica livre pra abrir por baixo sem ser cortado junto */
+
 .navbar__decor {
   position: absolute;
   inset: 0;
@@ -150,6 +173,19 @@ body {
   background-color: var(--color-primary-soft);
   padding: 6px;
   border-radius: var(--radius-pill);
+}
+
+.navbar__list {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.navbar__item {
+  display: block;
 }
 
 .navbar__link {
@@ -449,7 +485,11 @@ body {
 
 @media (max-width: 768px) {
   .hero {
+    
+    background-image: url('../imagens/bannermobile.png');
+    aspect-ratio: 3 / 4;
     min-height: 520px;
+    max-height: 680px;
   }
 
   /* no mobile a foto some da leitura de texto se o gradiente ficar só na
@@ -666,27 +706,39 @@ html.js .reveal.is-visible {
 
 @media (max-width: 640px) {
   .about {
-    aspect-ratio: 4 / 5;
-    min-height: 420px;
-    max-height: 560px;
+    background-image: url('../imagens/bannermobilenotebook.png');
+    aspect-ratio: auto;
+    min-height: 700px;
+    max-height: 820px;
     align-items: flex-start;
     padding-top: 32px;
+    background-position: center 32%;
   }
 
-  /* no mobile o texto fica sobre a parte de cima da imagem, por isso o
-     overlay muda de direção — mesma lógica usada no overlay mobile da hero */
+  /* No mobile, o texto recebe um gradiente mais escuro para aumentar o contraste.
+     Isso mantém a imagem visível sem prejudicar a legibilidade. */
   .about__overlay {
     background: linear-gradient(
       to bottom,
-      rgba(var(--overlay-rgb), 0.82) 0%,
-      rgba(var(--overlay-rgb), 0.55) 45%,
-      rgba(var(--overlay-rgb), 0) 78%
+      rgba(var(--overlay-rgb), 1) 0%,
+      rgba(var(--overlay-rgb), 0.96) 18%,
+      rgba(var(--overlay-rgb), 0.84) 36%,
+      rgba(var(--overlay-rgb), 0.72) 58%,
+      rgba(var(--overlay-rgb), 0.42) 78%,
+      rgba(var(--overlay-rgb), 0.12) 92%,
+      rgba(var(--overlay-rgb), 0) 100%
     );
   }
 
   .about__content {
     max-width: 100%;
-    padding: 0 28px;
+    padding: 0 28px 34px;
+  }
+
+  .about__lead,
+  .about__note,
+  .about__mission {
+    word-break: break-word;
   }
 }
 

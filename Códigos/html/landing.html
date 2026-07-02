@@ -4,6 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Janete Produtos Naturais</title>
+  <meta
+    name="description"
+    content="Janete Produtos Naturais oferece produtos frescos e sustentáveis com entrega rápida em Araras, Leme e região. Compre online ou pelo WhatsApp."
+  />
 
   <!-- preconnect antes do link da fonte reduz a latência da 1ª requisição pro Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -16,6 +20,7 @@
   <link rel="stylesheet" href="../css/style.css" />
 </head>
 <body>
+  <a href="#inicio" class="skip-link">Ir para o conteúdo principal</a>
 
   <header class="navbar">
     <!-- o wrapper existe só pra cortar a folha que vaza: o overflow:hidden
@@ -34,11 +39,13 @@
         <img src="../imagens/logo-janete.png" alt="Janete Produtos Naturais" />
       </a>
 
-      <nav class="navbar__nav" id="navbar-nav">
-        <a href="#inicio" class="navbar__link is-active" aria-current="page">Início</a>
-        <a href="#sobre" class="navbar__link">Sobre nós</a>
-        <a href="#faq" class="navbar__link">FAQ</a>
-        <a href="#servicos" class="navbar__link">Serviços</a>
+      <nav class="navbar__nav" id="navbar-nav" aria-label="Navegação principal">
+        <ul class="navbar__list">
+          <li class="navbar__item"><a href="#inicio" class="navbar__link is-active" aria-current="page">Início</a></li>
+          <li class="navbar__item"><a href="#sobre" class="navbar__link">Sobre nós</a></li>
+          <li class="navbar__item"><a href="#faq" class="navbar__link">FAQ</a></li>
+          <li class="navbar__item"><a href="#servicos" class="navbar__link">Serviços</a></li>
+        </ul>
       </nav>
 
       <button
@@ -55,7 +62,8 @@
     </div>
   </header>
 
-  <section class="hero" id="inicio">
+  <main>
+    <section class="hero" id="inicio">
     <div class="hero__overlay"></div>
 
     <div class="hero__content">
@@ -104,11 +112,7 @@
       <span class="section-intro__line" aria-hidden="true"></span>
     </div>
 
-    <section
-      class="about"
-      role="img"
-      aria-label="Site da Janete Produtos Naturais aberto em um notebook"
-    >
+    <section class="about">
       <div class="about__overlay"></div>
 
       <div class="about__content">
@@ -320,6 +324,7 @@
       </article>
     </div>
   </section>
+  </main>
 
   <footer class="footer">
     <!-- faixa verde no topo, espelhando o detalhe da navbar -->
@@ -372,6 +377,6 @@
     </div>
   </footer>
 
-  <script src="../js/script.js"></script>
+  <script src="../js/script.js" defer></script>
 </body>
 </html>
