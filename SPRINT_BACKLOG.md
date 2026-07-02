@@ -24,6 +24,24 @@
 | 7 | Definição dos Critérios de Aceitação|Estabelecer critérios para as tarefas| Pedro Benevides|Completo|Todas as tarefas possuem critérios de aceitação definidos e validados.|
 
 
+## Tarefas do Sprint 2
+
+| #  | Tarefa                    | Descrição                                                                         | Responsável            | Status   | Critérios de Aceitação                                                                                                           |
+| -- | ------------------------- | --------------------------------------------------------------------------------- | ---------------------- | -------- | -------------------------------------------------------------------------------------------------------------------------------- |
+| 1  | Estrutura HTML            | Desenvolver a estrutura base da landing page utilizando HTML5.                    | Valdemir               | Pendente | Estrutura HTML criada e organizada conforme o protótipo.                                                                         |
+| 2  | Header                    | Implementar o cabeçalho da landing page com logotipo e menu de navegação.         | Valdemir               | Pendente | Header implementado conforme o protótipo e com navegação funcional.                                                              |
+| 3  | Seção Hero                | Desenvolver a seção principal da landing page.                                    | Valdemir               | Pendente | Seção Hero implementada com título, descrição e botão de ação.                                                                   |
+| 4  | Seção Sobre Nós           | Desenvolver a seção de apresentação do projeto Janete.                            | Matheus                | Pendente | Seção Sobre Nós implementada conforme o layout definido.                                                                         |
+| 5  | Página FAQ                | Desenvolver a página de perguntas frequentes (FAQ).                               | Matheus                | Pendente | Página FAQ implementada, contendo todas as perguntas e respostas definidas e com navegação intuitiva.                            |
+| 6  | Rodapé                    | Desenvolver o rodapé da landing page.                                             | Rafael Gonçalves       | Pendente | Rodapé implementado com todas as informações previstas.                                                                          |
+| 7  | Estilização CSS           | Aplicar a identidade visual da landing page.                                      | Valdemir               | Pendente | Todos os componentes seguem a paleta de cores, tipografia e layout definidos.                                                    |
+| 8  | Responsividade            | Adaptar a landing page para dispositivos móveis e tablets.                        | Wanderson              | Pendente | A página é responsiva e apresenta boa usabilidade em diferentes resoluções.                                                      |
+| 9  | Interatividade JavaScript | Implementar funcionalidades interativas da página.                                | Valdemir               | Pendente | Todas as interações funcionam corretamente sem comprometer a navegação.                                                          |
+| 10 | Testes e Correções        | Realizar testes funcionais e corrigir possíveis inconsistências antes da entrega. | Pedro Benevides        | Pendente | Todos os testes foram executados, as funcionalidades validadas e não há erros críticos que impeçam a utilização da landing page. |
+| 11 | Code Review               | Revisar o código desenvolvido durante a sprint.                                   | Equipe                 | Pendente | Código revisado, aprovado e em conformidade com os padrões definidos.                                                            |
+| 12 | Validação da Sprint       | Validar se todas as entregas atendem aos requisitos definidos para a sprint.      | Pedro Benevides (P.O.) | Pendente | Todas as tarefas concluídas atendem aos critérios de aceitação e foram aprovadas para entrega.                                   |
+
+
 
 ## Observações / Bloqueios
 - Melhorar Nome das Pastas
