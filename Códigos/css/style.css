@@ -1,8 +1,4 @@
-/* =========================================================================
-   Design tokens
-   Centralizar cor/espaçamento/sombra aqui evita "números mágicos" espalhados
-   pelo resto do arquivo — se a paleta mudar um dia, muda só isso aqui.
-   ========================================================================= */
+
 :root {
   --color-bg: #ffffff;
   --color-ink: #232b22;          /* texto de título, verde-carvão em vez de preto puro */
@@ -10,7 +6,9 @@
   --color-primary: #3fa34d;
   --color-primary-dark: #256b30;
   --color-primary-soft: rgba(63, 163, 77, 0.08);
-  --overlay-rgb: 20, 36, 20;     /* base do gradiente da hero, em canais soltos */
+  --color-mist: #eef8ec; /* verde clarinho — usado como respiro de fundo, não como cor de destaque */
+  --overlay-rgb: 20, 36, 20;     /* base do gradiente da hero, em canais soltos;
+                                    também vira o fundo sólido do footer */
 
   --radius-pill: 999px;
   --radius-md: 10px;
@@ -54,9 +52,9 @@ body {
   }
 }
 
-/* =========================================================================
+/* 
    Navbar
-   ========================================================================= */
+    */
 
 .navbar {
   position: sticky;
@@ -69,12 +67,10 @@ body {
   -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid rgba(63, 163, 77, 0.12);
   box-shadow: var(--shadow-sm);
-  overflow: hidden; /* a folha decorativa vaza pra fora e precisa ser cortada aqui */
   transition: background-color 0.3s var(--ease), box-shadow 0.3s var(--ease);
 }
 
-/* Faixa fina no topo com o verde da marca — detalhe pequeno, mas é o tipo
-   de acabamento que diferencia um site "pronto" de um "profissional" */
+
 .navbar::before {
   content: '';
   position: absolute;
@@ -93,6 +89,17 @@ body {
   box-shadow: var(--shadow-md);
 }
 
+/* Camada de corte da folha: cobre exatamente a área visível da navbar e
+   corta só o que vaza DELA — o dropdown mobile, que é irmão dessa camada
+   (não filho), fica livre pra abrir por baixo sem ser cortado junto */
+.navbar__decor {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 1;
+}
+
 /* Folha decorativa: mesmo recurso visual da logo, isolada no canto */
 .navbar__leaf-decoration {
   position: absolute;
@@ -101,8 +108,6 @@ body {
   width: 150px;
   height: auto;
   opacity: 0.9;
-  pointer-events: none;
-  z-index: 1;
 }
 
 .navbar__container {
@@ -178,9 +183,21 @@ body {
    completamente do radar ao dar Tab, o que é um problema real de acessibilidade */
 .navbar__link:focus-visible,
 .navbar__cta:focus-visible,
-.navbar__toggle:focus-visible {
+.navbar__toggle:focus-visible,
+.faq__question:focus-visible,
+.footer__nav a:focus-visible,
+.footer__whatsapp:focus-visible,
+.footer__credit a:focus-visible {
   outline: 2px solid var(--color-primary-dark);
   outline-offset: 2px;
+}
+
+/* No footer o fundo é escuro, então o anel verde-escuro sumiria — ali o
+   foco precisa ser claro pra continuar visível */
+.footer__nav a:focus-visible,
+.footer__whatsapp:focus-visible,
+.footer__credit a:focus-visible {
+  outline-color: #ffffff;
 }
 
 /* Botão hambúrguer, escondido no desktop */
@@ -283,9 +300,9 @@ body {
   }
 }
 
-/* =========================================================================
+/* 
    Hero / banner
-   ========================================================================= */
+   */
 
 .hero {
   position: relative;
@@ -456,37 +473,101 @@ body {
   }
 }
 
-/* =========================================================================
+/* 
+   Intro de seção (linha — título — linha)
+   Nasceu no "Sobre nós" e virou padrão quando o FAQ precisou do mesmo
+   tratamento, por isso o nome genérico em vez de about-intro.
+    */
+
+.section-intro {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding: 48px 24px;
+  background-color: var(--color-mist);
+}
+
+/* Variante sem a faixa mist — usada quando a seção já tem fundo próprio
+   e a faixa colorida criaria dois blocos verdes colados (caso FAQ + features) */
+.section-intro--plain {
+  background-color: transparent;
+}
+
+.section-intro__line {
+  flex: 1;
+  max-width: 160px;
+  height: 1px;
+  background-color: var(--color-primary);
+  opacity: 0.4;
+}
+
+.section-intro__title {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: clamp(28px, 2.2vw + 18px, 38px);
+  letter-spacing: 0.5px;
+  color: var(--color-ink);
+  white-space: nowrap;
+}
+
+@media (max-width: 640px) {
+  .section-intro {
+    padding: 40px 20px;
+    gap: 16px;
+  }
+
+  .section-intro__title {
+    white-space: normal;
+    text-align: center;
+  }
+}
+
+@media (max-width: 900px) {
+  /* o título das features é longo demais pra caber numa linha só em telas
+     médias — libera a quebra mais cedo que nos outros títulos de seção */
+  .section-intro--plain .section-intro__title {
+    white-space: normal;
+    text-align: center;
+  }
+}
+
+/* 
+   Reveal on scroll
+   Utilitário genérico: qualquer elemento com .reveal entra com fade-up
+   quando aparece na viewport (IntersectionObserver no script.js).
+   Só ativa quando o JS marcou <html class="js"> — assim, se o script
+   falhar ou for bloqueado, nada fica invisível pra sempre.
+ */
+
+html.js .reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+}
+
+html.js .reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Stagger dos cards das features: cada um entra um tiquinho depois do
+   anterior — o delay é por posição no grid, não por classe extra no HTML */
+.features__grid .reveal:nth-child(2) { transition-delay: 0.08s; }
+.features__grid .reveal:nth-child(3) { transition-delay: 0.16s; }
+.features__grid .reveal:nth-child(4) { transition-delay: 0.24s; }
+
+/* 
    Sobre nós
-   ========================================================================= */
+    */
+
 
 .about {
   position: relative;
-  padding: 96px 24px;
-  background-color: var(--color-bg);
-}
-
-.about__container {
-  position: relative;
-  z-index: 1;
-  max-width: 1240px;
-  margin: 0 auto;
-}
-
-/* O notebook como fundo do próprio banner — mesma técnica da hero:
-   width:100% junto com aspect-ratio é o que evita o bug de o navegador
-   encolher a largura quando o max-height entra em ação (já vimos esse
-   problema lá na hero, então aplicamos a lição aqui também) */
-.about__banner {
-  position: relative;
   width: 100%;
   aspect-ratio: 3 / 2; /* proporção real da imagem: 1920x1280 */
-  /* sem um teto agressivo aqui: como esse banner já é limitado pelo
-     container de 1240px (diferente da hero, que é full-bleed), o cover
-     nunca precisa cortar muito — o min/max abaixo é só uma guarda de
-     segurança pros extremos, não o que define a altura no dia a dia */
-  min-height: 300px;
-  max-height: 860px;
+  min-height: 460px;
+  max-height: 740px;
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -496,17 +577,18 @@ body {
   background-repeat: no-repeat;
 }
 
-/* Gradiente claro concentrado à esquerda — é onde o texto entra, e é
-   também o lado que já é mais claro na imagem original. Ao contrário do
-   overlay escuro da hero, aqui o texto é escuro sobre um reforço branco. */
+/* Gradiente escuro concentrado à esquerda — mesma técnica exata da hero
+   (que usa --overlay-rgb, escuro à direita porque o texto dela fica à
+   direita); aqui o texto fica à esquerda, então o gradiente é espelhado. */
 .about__overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
     to right,
-    rgba(255, 255, 255, 0.92) 0%,
-    rgba(255, 255, 255, 0.6) 46%,
-    rgba(255, 255, 255, 0) 76%
+    rgba(var(--overlay-rgb), 0.86) 0%,
+    rgba(var(--overlay-rgb), 0.68) 32%,
+    rgba(var(--overlay-rgb), 0.25) 58%,
+    rgba(var(--overlay-rgb), 0) 82%
   );
 }
 
@@ -515,47 +597,24 @@ body {
   z-index: 1;
   max-width: 520px;
   padding: 0 24px 0 5%;
-}
-
-/* Título alinhado à esquerda aqui (dentro do banner), diferente do
-   cabeçalho centralizado que a seção tinha antes — a linha do lado direito
-   perde sentido quando o conteúdo já não ocupa a largura toda */
-.about__header {
-  display: flex;
-  align-items: center;
-  gap: 16px;
-  margin-bottom: 20px;
-}
-
-.about__line {
-  width: 40px;
-  height: 2px;
-  background-color: var(--color-primary);
-}
-
-.about__title {
-  font-family: var(--font-heading);
-  font-weight: 500;
-  font-size: clamp(26px, 2vw + 18px, 34px);
-  letter-spacing: 0.5px;
-  color: var(--color-ink);
+  color: #ffffff;
 }
 
 .about__text {
   font-size: 16px;
   line-height: 1.75;
-  color: var(--color-text);
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .about__lead {
   font-size: 16.5px;
   line-height: 1.75;
-  color: var(--color-text);
+  color: rgba(255, 255, 255, 0.92);
   margin-bottom: 20px;
 }
 
-/* Cidades como pílulas com um ícone de localização — transforma um dado
-   solto no meio do texto em algo que se lê rápido, sem precisar ler a frase */
+/* Cidades como pílulas com um ícone de localização — mesmo idioma visual
+   do badge "🌿 Direto do produtor" da hero (fundo translúcido + borda clara) */
 .about__locations {
   display: flex;
   flex-wrap: wrap;
@@ -570,9 +629,9 @@ body {
   gap: 6px;
   font-size: 13.5px;
   font-weight: 600;
-  color: var(--color-primary-dark);
-  background-color: rgba(255, 255, 255, 0.7);
-  border: 1px solid rgba(63, 163, 77, 0.25);
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.3);
   padding: 6px 14px;
   border-radius: var(--radius-pill);
 }
@@ -586,7 +645,7 @@ body {
 .about__note {
   font-size: 14.5px;
   line-height: 1.6;
-  color: var(--color-text);
+  color: rgba(255, 255, 255, 0.85);
   margin-bottom: 24px;
 }
 
@@ -602,15 +661,11 @@ body {
   font-weight: 500;
   font-size: 16.5px;
   line-height: 1.7;
-  color: var(--color-ink);
+  color: #ffffff;
 }
 
 @media (max-width: 640px) {
   .about {
-    padding: 72px 20px;
-  }
-
-  .about__banner {
     aspect-ratio: 4 / 5;
     min-height: 420px;
     max-height: 560px;
@@ -618,19 +673,423 @@ body {
     padding-top: 32px;
   }
 
-  /* no mobile o texto fica sobre a parte de cima da imagem (mais clara,
-     sem o notebook), por isso o overlay muda de direção */
+  /* no mobile o texto fica sobre a parte de cima da imagem, por isso o
+     overlay muda de direção — mesma lógica usada no overlay mobile da hero */
   .about__overlay {
     background: linear-gradient(
       to bottom,
-      rgba(255, 255, 255, 0.92) 0%,
-      rgba(255, 255, 255, 0.6) 45%,
-      rgba(255, 255, 255, 0) 75%
+      rgba(var(--overlay-rgb), 0.82) 0%,
+      rgba(var(--overlay-rgb), 0.55) 45%,
+      rgba(var(--overlay-rgb), 0) 78%
     );
   }
 
   .about__content {
     max-width: 100%;
     padding: 0 28px;
+  }
+}
+
+/* 
+   FAQ
+   */
+
+.faq {
+  padding-bottom: 80px;
+  background-color: var(--color-bg);
+}
+
+.faq__list {
+  max-width: 760px;
+  margin: 48px auto 0;
+  padding: 0 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.faq__item {
+  background-color: #ffffff;
+  border: 1px solid rgba(63, 163, 77, 0.16);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  transition: box-shadow 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+
+/* O item aberto "levanta" um pouco do resto da lista — mesma hierarquia
+   de sombra que o hover do CTA da hero (sm em repouso, md em destaque) */
+.faq__item.is-open {
+  border-color: rgba(63, 163, 77, 0.35);
+  box-shadow: var(--shadow-md);
+}
+
+.faq__question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 22px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--font-body);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--color-ink);
+}
+
+/* Ícone de + num círculo verde-suave; quando abre, gira 45° e vira um ×
+   preenchido — mais claro do que trocar o caractere via JS */
+.faq__icon {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background-color: var(--color-primary-soft);
+  color: var(--color-primary-dark);
+  transition: transform 0.25s var(--ease), background-color 0.2s var(--ease), color 0.2s var(--ease);
+}
+
+.faq__icon svg {
+  width: 14px;
+  height: 14px;
+}
+
+.faq__item.is-open .faq__icon {
+  transform: rotate(45deg);
+  background-color: var(--color-primary);
+  color: #ffffff;
+}
+
+/* Animação de abertura com grid-template-rows (0fr -> 1fr): anima até a
+   altura real do conteúdo, sem o número mágico de max-height que quebra
+   quando a resposta é mais longa do que o valor chutado */
+.faq__answer {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 0.3s var(--ease);
+}
+
+.faq__item.is-open .faq__answer {
+  grid-template-rows: 1fr;
+}
+
+.faq__answer-inner {
+  overflow: hidden; /* obrigatório pro truque do 0fr funcionar */
+}
+
+.faq__answer p {
+  padding: 0 22px 20px;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--color-text);
+}
+
+@media (max-width: 640px) {
+  .faq {
+    padding-bottom: 56px;
+  }
+
+  .faq__list {
+    margin-top: 36px;
+    padding: 0 20px;
+  }
+
+  .faq__question {
+    padding: 16px 18px;
+    font-size: 15px;
+  }
+
+  .faq__answer p {
+    padding: 0 18px 18px;
+  }
+}
+
+/* 
+   Features / Serviços ("Tecnologia que conecta você ao bem-estar")
+    */
+
+.features {
+  position: relative;
+  padding: 16px 0 96px;
+  background-color: var(--color-bg);
+  overflow: hidden; /* as folhas decorativas vazam pros cantos, igual na navbar */
+}
+
+/* Folhas nos cantos como no layout — a mesma imagem da navbar, só
+   reposicionada/espelhada via transform pra não precisar de uma segunda
+   asset. pointer-events: none pra não roubar clique de nada por perto. */
+.features__leaf {
+  position: absolute;
+  width: 140px;
+  height: auto;
+  opacity: 0.85;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.features__leaf--top {
+  top: -20px;
+  left: -30px;
+  transform: scaleX(-1) rotate(12deg); /* espelha pra "apontar" pra dentro da página */
+}
+
+.features__leaf--bottom {
+  bottom: -24px;
+  right: -26px;
+  transform: rotate(180deg);
+}
+
+.features__lead {
+  position: relative;
+  z-index: 1;
+  max-width: 680px;
+  margin: 0 auto 48px;
+  padding: 0 24px;
+  text-align: center;
+  font-size: 17px;
+  line-height: 1.75;
+  color: var(--color-text);
+}
+
+.features__grid {
+  position: relative;
+  z-index: 1;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+.features__card {
+  background-color: var(--color-mist);
+  border: 1px solid rgba(63, 163, 77, 0.14);
+  border-radius: var(--radius-md);
+  padding: 28px 22px;
+  text-align: center;
+  transition: transform 0.25s var(--ease), box-shadow 0.25s var(--ease), border-color 0.25s var(--ease);
+}
+
+/* Levanta no hover com a mesma escala de sombra do resto do site
+   (sm -> md), pra sinalizar interatividade sem virar botão */
+.features__card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(63, 163, 77, 0.3);
+}
+
+/* Ícone num círculo branco: no fundo mist, o branco funciona como a
+   "pílula ativa" da navbar — mesma linguagem de destaque */
+.features__icon {
+  display: inline-grid;
+  place-items: center;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  color: var(--color-primary-dark);
+  box-shadow: var(--shadow-sm);
+  margin-bottom: 16px;
+}
+
+.features__icon svg {
+  width: 26px;
+  height: 26px;
+}
+
+.features__title {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 18px;
+  color: var(--color-ink);
+  margin-bottom: 8px;
+}
+
+.features__text {
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: var(--color-text);
+}
+
+@media (max-width: 900px) {
+  .features__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .features {
+    padding-bottom: 64px;
+  }
+
+  .features__grid {
+    grid-template-columns: 1fr;
+    max-width: 420px; /* card solteiro esticando a tela toda fica desproporcional */
+  }
+
+  .features__leaf {
+    width: 90px;
+  }
+}
+
+/* 
+   Footer
+   Fundo escuro no mesmo tom dos overlays (--overlay-rgb sólido) — fecha a
+   página com o mesmo verde profundo que aparece na hero e no Sobre nós,
+   em vez de introduzir um preto/cinza novo só pro rodapé.
+   */
+
+.footer {
+  background-color: rgb(var(--overlay-rgb));
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* Faixa fina verde no topo — espelha o ::before da navbar, amarrando o
+   início e o fim da página com o mesmo detalhe de acabamento */
+.footer__accent {
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-primary-dark));
+}
+
+.footer__main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 56px 24px 40px;
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1.2fr;
+  gap: 48px;
+}
+
+/* A logo tem fundo pensado pra páginas claras — em cima do verde escuro
+   ela se perderia, então vive dentro de um chip branco arredondado */
+.footer__logo-chip {
+  display: inline-block;
+  background-color: #ffffff;
+  border-radius: var(--radius-md);
+  padding: 10px 16px;
+  margin-bottom: 18px;
+}
+
+.footer__logo-chip img {
+  height: 64px;
+  width: auto;
+  display: block;
+}
+
+.footer__tagline {
+  font-family: var(--font-heading);
+  font-style: italic;
+  font-size: 16px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+  max-width: 280px;
+}
+
+.footer__heading {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  color: var(--color-primary);
+  margin-bottom: 18px;
+}
+
+.footer__nav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.footer__nav a {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+  font-size: 15px;
+  transition: color 0.2s var(--ease);
+}
+
+.footer__nav a:hover {
+  color: #ffffff;
+}
+
+.footer__contact p {
+  font-size: 14.5px;
+  line-height: 1.7;
+  margin-bottom: 14px;
+}
+
+/* Botão de WhatsApp como CTA principal do footer — no fim da página a
+   pessoa já leu tudo, esse é o momento de conversão */
+.footer__whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background-color: var(--color-primary);
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14.5px;
+  padding: 12px 22px;
+  border-radius: var(--radius-pill);
+  transition: background-color 0.2s var(--ease), transform 0.2s var(--ease);
+}
+
+.footer__whatsapp:hover {
+  background-color: var(--color-primary-dark);
+  transform: translateY(-1px);
+}
+
+.footer__whatsapp svg {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.footer__bottom {
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.footer__bottom-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 20px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  font-size: 13.5px;
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.footer__credit a {
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s var(--ease);
+}
+
+.footer__credit a:hover {
+  color: var(--color-primary);
+}
+
+@media (max-width: 820px) {
+  .footer__main {
+    grid-template-columns: 1fr;
+    gap: 36px;
+    padding: 44px 24px 32px;
+  }
+
+  .footer__bottom-inner {
+    flex-direction: column;
+    text-align: center;
   }
 }
