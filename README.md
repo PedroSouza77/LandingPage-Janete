@@ -1,110 +1,101 @@
-# Simulação de Sprint Scrum - [SeuByte]
+# Janete - Landing Page
 
-## Informações Gerais
 
-- **Disciplina:** Gestão Ágil de Projetos de Software
-- **Data da Sprint:** 30/06/2026
-- **Duração:** 19h às 22h (3 horas)
-- **Equipe:** Pedro Benevides Souza, Wanderson, Rafael Gonçalves, Matheus Alexandre, Valdemir Valentin
-- **Professor:** Esdras Bezerra da Silva
+
+<p align="center">
+  Landing Page desenvolvida para apresentar o projeto <strong>Janete</strong>, destacando suas funcionalidades, objetivos e informações de forma clara, moderna e responsiva.
+</p>
 
 ---
 
-## Objetivo da Atividade
+# 📖 Sobre o Projeto
 
-Praticar o fluxo completo do **Scrum** em uma Sprint curta, incluindo:
-- Sprint Planning
-- Execução de tarefas
-- Commits
-- Code Review via Pull Requests
-- Merge
-- Sprint Review
-- Sprint Retrospective
+O **Janete** é uma landing page desenvolvida com o objetivo de apresentar o projeto de forma intuitiva e atrativa aos usuários.
+
+A aplicação foi construída utilizando apenas tecnologias web nativas, priorizando simplicidade, desempenho e responsividade. O projeto contempla uma interface moderna, organizada e de fácil navegação, permitindo que visitantes conheçam as principais informações sobre o sistema.
 
 ---
 
-## Rituais do Scrum
+# ✨ Funcionalidades
 
-### 1. Sprint Planning: 20m
-- Definir 1 tarefas por aluno
-- Preencher o arquivo [SPRINT_BACKLOG.md](./SPRINT_BACKLOG.md)
-- Definir Definition of Done (DoD)
-
-### 2. Execução: 10m
-- Desenvolver a tarefa do backlog inicial
-- Fazer commit com mensagem clara
-- Push da branch
-
-### 4. Simulação de Dayli: 3m cada grupo
-- Reportar o dia anterior (Item 2)
-- Apresentar o plano de trabalho individual  do dia
-- Pedir auxilio
-- Prestar auxílio
-
-### 5. Execução: 20m
-- Criar branch: `feature/seu-nome-tarefa`
-- Desenvolver a tarefa
-- Fazer commit com mensagem clara
-- Push da branch
-
-### 4. Pull Request + Code Review 10m
-- Abrir Pull Request para a branch `main`
-- Revisar pelo menos **1 PR** de um colega
-- Responder aos comentários
-
-### 5. Merge 5m
-- Realizar merge após aprovação
-
-### 5. Sprint Review 5m
-- Apresentar as entregas do grupo (8 minutos)
-
-### 7. Sprint Retrospective 5m
-- Preencher o arquivo [RETROSPECTIVE.md](./RETROSPECTIVE.md)
+* 🏠 Página inicial
+* 👥 Seção Sobre Nós
+* ❓ Página de Perguntas Frequentes (FAQ)
+* 📱 Layout Responsivo
+* 🎨 Interface moderna
+* ⚡ Navegação simples e intuitiva
 
 ---
 
-## Regras e Boas Práticas
+# 🛠 Tecnologias Utilizadas
 
-- **Commits:** Use mensagens claras e no padrão Conventional Commits (ex: `feat:`, `fix:`, `docs:`)
-- **Branches:** Nomeie como `feature/nome-da-tarefa-seu-nome`
-- **Pull Requests:** 
-  - Título claro
-  - Descreva o que foi feito
-  - Adicione prints ou descrição de teste quando possível
-- **Code Review:** Seja respeitoso e construtivo nos comentários
-- **Definition of Done:** Todas as tarefas devem cumprir o DoD combinado
+* HTML5
+* CSS3
+* JavaScript
 
----
-
-## Arquivos do Projeto
-
-- **[SPRINT_BACKLOG.md](./SPRINT_BACKLOG.md)** → Backlog e tarefas da Sprint
-- **[RETROSPECTIVE.md](./RETROSPECTIVE.md)** → Retrospectiva da Sprint
-- `src/` ou `docs/` → (opcional) pasta para código e documentação
+ <p align="center">
+  <img src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white">
+  <img src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white">
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
+</p>
 
 ---
 
-## Tarefas do Grupo
+## 📂 Estrutura do Projeto
 
-> *As tarefas serão preenchidas durante o Planning no SPRINT_BACKLOG.md*
+```text
+LandingPage-Janete/
+│
+├── codigo/
+│   ├── css/
+│   │   └── style.css
+│   │
+│   ├── html/
+│   │   └── index.html
+│   │
+│   ├── imagens/
+│   │   ├── ...
+│   │   └── ...
+│   │
+│   └── js/
+│       └── main.js
+│
+├── FAQ.css
+├── FAQ.html
+├── FAQ.png
+├── Paleta de Cores
+├── Rodapé.png
+├── Serviços.png
+├── Sobre nós.png
+├── Tela-perfil.png
+│
+├── SPRINT_BACKLOG.md
+├── RETROSPECTIVE.md
+└── README.md
+```
 
 ---
 
-## Como Participar
+# 📋 Documentação da Sprint
 
-1. Crie um repositório publico à partir deste template.
-2. Crie sua branch
-3. Desenvolva sua tarefa
-4. Commit → Push → Pull Request
-5. Revise o PR de um colega
-6. Participe da Review e Retrospective
+A documentação do projeto está disponível na pasta **docs**.
 
----
-
-**Boa Sprint!**  
-Lembrem-se: o foco é **colaborar**, **aprender** e **entregar valor** em equipe.
+| Documento           | Descrição                                                                                    |
+| ------------------- | -------------------------------------------------------------------------------------------- |
+| `SPRINT_BACKLOG.md` | Planejamento e organização das tarefas da Sprint.                                            |
+| `RETROSPECTIVE.md`  | Retrospectiva da Sprint, contendo pontos positivos, melhorias e ações para a próxima Sprint. |
 
 ---
 
-**Professor:** `Esdras B Silva` 
-**Contato:** `esdras.silva@cps.sp.gov.br`
+# 👨‍💻 Equipe - Seu Byte
+
+* Pedro Benevides Souza
+* Rafael Gonçalves
+* Valdemir Valentin
+* Matheus Alexandre
+* Wanderson
+* Gabriel Marques Terra
+
+---
+
+Este projeto foi desenvolvido para fins acadêmicos.
