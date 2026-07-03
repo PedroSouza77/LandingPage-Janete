@@ -6,15 +6,17 @@ document.documentElement.classList.add('js');
 const toggleButton = document.getElementById('navbar-toggle');
 const nav = document.getElementById('navbar-nav');
 const navbar = document.querySelector('.navbar');
-const navLinks = Array.from(nav?.querySelectorAll('.navbar__link') ?? []);
+const navLinks = nav ? Array.from(nav.querySelectorAll('.navbar__link')) : [];
 const sections = Array.from(document.querySelectorAll('main section[id]'));
 const faqItems = Array.from(document.querySelectorAll('.faq__item'));
 const scrollCue = document.querySelector('.hero__scroll-cue');
 
 const closeMobileNav = () => {
-  nav?.classList.remove('is-open');
-  toggleButton?.classList.remove('is-active');
-  toggleButton?.setAttribute('aria-expanded', 'false');
+  if (nav) nav.classList.remove('is-open');
+  if (toggleButton) {
+    toggleButton.classList.remove('is-active');
+    toggleButton.setAttribute('aria-expanded', 'false');
+  }
 };
 
 const updateActiveNavLink = (sectionId) => {
@@ -40,7 +42,7 @@ const handleNavbarScroll = () => {
 
 if (toggleButton) {
   toggleButton.addEventListener('click', () => {
-    const isOpen = nav?.classList.toggle('is-open');
+    const isOpen = nav ? nav.classList.toggle('is-open') : false;
     toggleButton.classList.toggle('is-active', Boolean(isOpen));
     toggleButton.setAttribute('aria-expanded', String(Boolean(isOpen)));
   });
