@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Janete Produtos Naturais</title>
+  <meta
+    name="description"
+    content="Janete Produtos Naturais oferece produtos frescos e sustentáveis com entrega rápida em Araras, Leme e região. Compre online ou pelo WhatsApp."
+  />
+
+  <!-- preconnect antes do link da fonte reduz a latência da 1ª requisição pro Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;1,9..144,500&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="../css/style.css" />
+</head>
+<body>
+  <a href="#inicio" class="skip-link">Ir para o conteúdo principal</a>
+
+  <header class="navbar">
+    <!-- o wrapper existe só pra cortar a folha que vaza: o overflow:hidden
+         não pode ficar na .navbar porque ele também cortaria o dropdown
+         mobile, que abre ABAIXO da navbar (top: 100%) -->
+    <div class="navbar__decor" aria-hidden="true">
+      <img
+        src="../imagens/folha-decorativa.png"
+        alt=""
+        class="navbar__leaf-decoration"
+      />
+    </div>
+
+    <div class="navbar__container">
+      <a href="#inicio" class="navbar__logo">
+        <img src="../imagens/logo-janete.png" alt="Janete Produtos Naturais" />
+      </a>
+
+      <nav class="navbar__nav" id="navbar-nav" aria-label="Navegação principal">
+        <ul class="navbar__list">
+          <li><a href="#inicio" class="navbar__link is-active" aria-current="page">Início</a></li>
+          <li><a href="#sobre" class="navbar__link">Sobre nós</a></li>
+          <li><a href="#faq" class="navbar__link">FAQ</a></li>
+          <li><a href="#servicos" class="navbar__link">Serviços</a></li>
+        </ul>
+      </nav>
+
+      <button
+        class="navbar__toggle"
+        id="navbar-toggle"
+        aria-label="Abrir menu"
+        aria-expanded="false"
+        aria-controls="navbar-nav"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="inicio">
+    <div class="hero__overlay"></div>
+
+    <div class="hero__content">
+      <span class="hero__badge">🌿 Direto do produtor</span>
+
+      <h1 class="hero__title">Da terra direto para a sua casa</h1>
+
+      <p class="hero__text">
+        Produtos naturais selecionados com cuidado, do plantio à colheita,
+        pra levar até você o que a natureza tem de mais puro.
+      </p>
+
+      <a href="#servicos" class="hero__cta">
+        Conheça nossos produtos
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+          <path
+            d="M5 12h14m-6-6 6 6-6 6"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+          />
+        </svg>
+      </a>
+    </div>
+
+    <a href="#sobre" class="hero__scroll-cue" aria-label="Rolar para a próxima seção">
+      <svg viewBox="0 0 24 24" width="26" height="26" fill="none" aria-hidden="true">
+        <path
+          d="M6 9l6 6 6-6"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        />
+      </svg>
+    </a>
+  </section>
+
+  <div class="about-wrapper" id="sobre">
+    <!-- h2 em vez de h1: a página já tem o h1 da hero, e dois h1 bagunçam
+         a hierarquia pra leitores de tela e pro SEO -->
+    <div class="section-intro">
+      <span class="section-intro__line" aria-hidden="true"></span>
+      <h2 class="section-intro__title">Sobre nós</h2>
+      <span class="section-intro__line" aria-hidden="true"></span>
+    </div>
+
+    <section
+      class="about"
+      role="img"
+      aria-label="Site da Janete Produtos Naturais aberto em um notebook"
+    >
+      <div class="about__overlay"></div>
+
+      <div class="about__content">
+        <p class="about__lead">
+          A Janete Produtos Naturais está no mercado desde 2010, trazendo
+          produtos frescos e de excelente qualidade, escolhidos com carinho
+          exclusivamente para você.
+        </p>
+
+        <ul class="about__locations">
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path
+                d="M12 21s7-6.1 7-11.5A7 7 0 0 0 5 9.5C5 14.9 12 21 12 21Z"
+                stroke="currentColor"
+                stroke-width="1.8"
+              />
+              <circle cx="12" cy="9.5" r="2.3" stroke="currentColor" stroke-width="1.8" />
+            </svg>
+            Araras – SP
+          </li>
+          <li>
+            <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path
+                d="M12 21s7-6.1 7-11.5A7 7 0 0 0 5 9.5C5 14.9 12 21 12 21Z"
+                stroke="currentColor"
+                stroke-width="1.8"
+              />
+              <circle cx="12" cy="9.5" r="2.3" stroke="currentColor" stroke-width="1.8" />
+            </svg>
+            Leme – SP
+          </li>
+        </ul>
+
+        <p class="about__note">
+          E também pelo conforto da sua casa — as compras podem ser feitas
+          online, onde você estiver.
+        </p>
+
+        <blockquote class="about__mission">
+          Nossa missão é oferecer uma alimentação saudável por meio de
+          produtos de alta qualidade, proporcionando aos nossos clientes uma
+          experiência única e contribuindo para a melhor preservação dos
+          recursos naturais.
+        </blockquote>
+      </div>
+    </section>
+  </div>
+
+  <section class="faq" id="faq">
+    <div class="section-intro">
+      <span class="section-intro__line" aria-hidden="true"></span>
+      <h2 class="section-intro__title">Perguntas frequentes</h2>
+      <span class="section-intro__line" aria-hidden="true"></span>
+    </div>
+
+    <div class="faq__list">
+      <div class="faq__item">
+        <button class="faq__question" aria-expanded="false" aria-controls="faq-a1">
+          Como funciona a entrega?
+          <span class="faq__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
+            </svg>
+          </span>
+        </button>
+        <div class="faq__answer" id="faq-a1">
+          <div class="faq__answer-inner">
+            <p>
+              Atendemos Araras, Leme e região. Você faz o pedido online ou
+              pelo WhatsApp e a gente cuida do resto.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq__item">
+        <button class="faq__question" aria-expanded="false" aria-controls="faq-a2">
+          Os produtos são orgânicos?
+          <span class="faq__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
+            </svg>
+          </span>
+        </button>
+        <div class="faq__answer" id="faq-a2">
+          <div class="faq__answer-inner">
+            <p>Sim! Trabalhamos apenas com produtores locais certificados.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq__item">
+        <button class="faq__question" aria-expanded="false" aria-controls="faq-a3">
+          Qual o prazo de entrega?
+          <span class="faq__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
+            </svg>
+          </span>
+        </button>
+        <div class="faq__answer" id="faq-a3">
+          <div class="faq__answer-inner">
+            <p>Em média 3 dias úteis, dependendo da região.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="faq__item">
+        <button class="faq__question" aria-expanded="false" aria-controls="faq-a4">
+          As embalagens são biodegradáveis?
+          <span class="faq__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M12 5v14M5 12h14" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" />
+            </svg>
+          </span>
+        </button>
+        <div class="faq__answer" id="faq-a4">
+          <div class="faq__answer-inner">
+            <p>Sim! Nossas embalagens não agridem o meio ambiente.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="features" id="servicos">
+    <!-- folhas decorativas nos cantos, como no layout — mesma asset da
+         navbar, espelhada via CSS pra não precisar de uma segunda imagem -->
+    <img
+      src="../imagens/folha-decorativa.png"
+      alt=""
+      class="features__leaf features__leaf--top"
+      aria-hidden="true"
+    />
+    <img
+      src="../imagens/folha-decorativa.png"
+      alt=""
+      class="features__leaf features__leaf--bottom"
+      aria-hidden="true"
+    />
+
+    <div class="section-intro section-intro--plain">
+      <span class="section-intro__line" aria-hidden="true"></span>
+      <h2 class="section-intro__title">Tecnologia que conecta você ao bem-estar</h2>
+      <span class="section-intro__line" aria-hidden="true"></span>
+    </div>
+
+    <p class="features__lead">
+      Unimos o cuidado de quem produz com a praticidade da tecnologia:
+      você escolhe, pede e recebe sem sair de casa — com a mesma
+      qualidade de sempre.
+    </p>
+
+    <div class="features__grid">
+      <article class="features__card reveal">
+        <span class="features__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M4 7h16l-1.5 11a2 2 0 0 1-2 1.8h-9A2 2 0 0 1 5.5 18L4 7Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" />
+            <path d="M8.5 10V6a3.5 3.5 0 0 1 7 0v4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+          </svg>
+        </span>
+        <h3 class="features__title">Loja online</h3>
+        <p class="features__text">
+          Catálogo completo pra comprar de onde estiver, a qualquer hora do dia.
+        </p>
+      </article>
+
+      <article class="features__card reveal">
+        <span class="features__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-5.1A8 8 0 1 1 21 12Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" />
+            <path d="M8.5 12h.01M12 12h.01M15.5 12h.01" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" />
+          </svg>
+        </span>
+        <h3 class="features__title">Pedido pelo WhatsApp</h3>
+        <p class="features__text">
+          Atendimento direto e sem complicação, pelo aplicativo que você já usa.
+        </p>
+      </article>
+
+      <article class="features__card reveal">
+        <span class="features__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <path d="M3 7h11v9H3V7Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" />
+            <path d="M14 10h3.5L21 13v3h-7v-6Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" />
+            <circle cx="7.5" cy="17.5" r="1.8" stroke="currentColor" stroke-width="1.8" />
+            <circle cx="17" cy="17.5" r="1.8" stroke="currentColor" stroke-width="1.8" />
+          </svg>
+        </span>
+        <h3 class="features__title">Entrega na região</h3>
+        <p class="features__text">
+          Levamos até a sua porta em Araras, Leme e cidades vizinhas.
+        </p>
+      </article>
+
+      <article class="features__card reveal">
+        <span class="features__icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none">
+            <rect x="3" y="6" width="18" height="13" rx="2" stroke="currentColor" stroke-width="1.8" />
+            <path d="M3 10h18" stroke="currentColor" stroke-width="1.8" />
+            <path d="M7 15h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+          </svg>
+        </span>
+        <h3 class="features__title">Pagamento facilitado</h3>
+        <p class="features__text">
+          Pix, cartão ou dinheiro na entrega — você escolhe como pagar.
+        </p>
+      </article>
+    </div>
+  </section>
+  </main>
+
+  <footer class="footer">
+    <!-- faixa verde no topo, espelhando o detalhe da navbar -->
+    <div class="footer__accent" aria-hidden="true"></div>
+
+    <div class="footer__main">
+      <div class="footer__brand">
+        <!-- chip branco atrás da logo: ela foi feita pra fundo claro e
+             sumiria direto sobre o verde escuro do footer -->
+        <span class="footer__logo-chip">
+          <img src="../imagens/logo-janete.png" alt="Janete Produtos Naturais" />
+        </span>
+        <p class="footer__tagline">Da terra direto para a sua casa, desde 2010.</p>
+      </div>
+
+      <nav class="footer__nav" aria-label="Navegação do rodapé">
+        <h3 class="footer__heading">Navegação</h3>
+        <a href="#inicio">Início</a>
+        <a href="#sobre">Sobre nós</a>
+        <a href="#faq">FAQ</a>
+        <a href="#servicos">Serviços</a>
+      </nav>
+
+      <div class="footer__contact">
+        <h3 class="footer__heading">Atendimento</h3>
+        <p>Araras – SP e Leme – SP, com entrega em toda a região.</p>
+        <!-- TODO: trocar 55XXXXXXXXXXX pelo número real da Janete antes de publicar -->
+        <a
+          href="https://wa.me/55XXXXXXXXXXX?text=Ol%C3%A1!%20Vim%20pelo%20site%20e%20quero%20fazer%20um%20pedido."
+          class="footer__whatsapp"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 2a9.9 9.9 0 0 0-8.6 14.9L2 22l5.3-1.4A9.9 9.9 0 1 0 12 2Zm0 18.1a8 8 0 0 1-4.1-1.1l-.3-.2-3.1.8.8-3-.2-.3A8.1 8.1 0 1 1 12 20.1Zm4.5-6c-.2-.1-1.4-.7-1.7-.8-.2-.1-.4-.1-.5.1-.2.2-.6.8-.7.9-.1.2-.3.2-.5.1a6.6 6.6 0 0 1-3.3-2.9c-.2-.4.2-.4.6-1.2.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.5-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1.1 2.7c.1.2 1.8 2.8 4.5 3.9 1.7.7 2.3.8 3.1.7.5-.1 1.4-.6 1.6-1.1.2-.6.2-1 .1-1.1 0-.1-.2-.2-.4-.3Z" />
+          </svg>
+          Fazer pedido pelo WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <div class="footer__bottom">
+      <div class="footer__bottom-inner">
+        <p>© 2026 Janete Produtos Naturais. Todos os direitos reservados.</p>
+        <p class="footer__credit">
+          Desenvolvido por
+          <a href="https://seubyte.com.br" target="_blank" rel="noopener noreferrer">SeuByte</a>
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/script.js" defer></script>
+</body>
+</html>
